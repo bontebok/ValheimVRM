@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using UniGLTF;
 using UnityEngine;
 using VRM;
@@ -34,7 +35,19 @@ namespace ValheimVRM
 
 		public static void Initialize()
 		{
-			var bundlePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"ValheimVRM.shaders");
+			var bundlePath = "";
+			if (Settings.globalSettings.UseShaderBundle == "current")
+			{
+				bundlePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"UniVrm.shaders");
+			} else if (Settings.globalSettings.UseShaderBundle == "old")
+			{
+				bundlePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"ValheimVRM.shaders");
+			}
+			else
+			{
+				Debug.LogError("[ValheimVRM] Invalid UseShaderBundle; old, current");
+			}
+			
 			if (File.Exists(bundlePath))
 			{
 				var assetBundle = AssetBundle.LoadFromFile(bundlePath);
@@ -223,6 +236,88 @@ namespace ValheimVRM
 				{
 					foreach (var chest in chestList) SetVisible(chest, false);
 				}
+				if (settings.UseBlendshapeArmorSwap)
+				{
+					if (VrmManager.PlayerToVrmInstance.TryGetValue(player, out var vrm))
+					{
+						Debug.Log("UpdateLodgroup Chest | armor on | vrm found");
+
+						
+						var proxy = vrm.GetComponent<VRMBlendShapeProxy>();
+						
+						if (proxy == null)
+						{
+							Debug.LogError("VRMBlendShapeProxy not found!");
+							return;
+						}
+
+						var vvv = proxy.GetValues();
+
+						foreach (var keyValuePair in vvv)
+						{
+							Debug.Log(keyValuePair.Key + ": " + keyValuePair.Value);
+						}
+						
+						
+						proxy.SetValues(new Dictionary<BlendShapeKey, float>
+						{
+							{BlendShapeKey.CreateUnknown("Tail_Small"), 0.0f},
+							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_L), 0.0f},
+							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_R), 0.0f}
+						});
+						
+						//var armorSwap = vrm.GetComponent<VRMBlendShapeSync>();
+						// armorSwap["Tail_Small"].Smr.SetBlendShapeWeight(armorSwap["Tail_Small"].Index, 0.0f);
+						// armorSwap["Eyes_Blink_L"].Smr.SetBlendShapeWeight(armorSwap["Eyes_Blink_L"].Index, 0.0f);
+						// armorSwap["Eyes_Blink_R"].Smr.SetBlendShapeWeight(armorSwap["Eyes_Blink_R"].Index, 0.0f);
+ 
+					}
+					else
+					{
+						Debug.Log("UpdateLodgroup Chest | armor on | vrm not found");
+					}
+				}
+				
+			}
+			else
+			{
+				if (settings.UseBlendshapeArmorSwap)
+				{
+					if (VrmManager.PlayerToVrmInstance.TryGetValue(player, out var vrm))
+					{
+						Debug.Log("UpdateLodgroup Chest | NO armor on | vrm found");
+
+						var proxy = vrm.GetComponent<VRMBlendShapeProxy>();
+
+						if (proxy == null)
+						{
+							Debug.LogError("VRMBlendShapeProxy not found!");
+							return;
+						}
+
+						var vvv = proxy.GetValues();
+
+						foreach (var keyValuePair in vvv)
+						{
+							Debug.Log(keyValuePair.Key + ": " + keyValuePair.Value);
+						}
+
+						proxy.SetValues(new Dictionary<BlendShapeKey, float>
+						{
+							{BlendShapeKey.CreateUnknown("Tail_Small"), 1.0f},
+							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_L), 1.0f},
+							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_R), 1.0f}
+						});
+						//var armorSwap = vrm.GetComponent<VRMBlendShapeSync>();
+						// armorSwap["Tail_Small"].Smr.SetBlendShapeWeight(armorSwap["Tail_Small"].Index, 100.0f);
+						// armorSwap["Eyes_Blink_L"].Smr.SetBlendShapeWeight(armorSwap["Eyes_Blink_L"].Index, 100.0f);
+						// armorSwap["Eyes_Blink_R"].Smr.SetBlendShapeWeight(armorSwap["Eyes_Blink_R"].Index, 100.0f);
+					}
+					else
+					{
+						Debug.Log("UpdateLodgroup Chest | NO armor on | vrm NOT found");
+					}
+				}
 			}
 
 			var legList = __instance.GetField<VisEquipment, List<GameObject>>("m_legItemInstances");
@@ -362,7 +457,7 @@ namespace ValheimVRM
 			
 
 				var ragAnim = ragdoll.gameObject.AddComponent<Animator>();
-				ragAnim.keepAnimatorControllerStateOnDisable = true;
+				ragAnim.keepAnimatorStateOnDisable = true;
 				ragAnim.cullingMode = AnimatorCullingMode.AlwaysAnimate;
 
 				var orgAnim = (player.GetField<Player, Animator>("m_animator"));

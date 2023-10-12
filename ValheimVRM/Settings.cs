@@ -227,6 +227,8 @@ namespace ValheimVRM
             public bool ShouldersVisible = false;
             public bool UtilityVisible = false;
             public bool LegsVisible = false;
+            
+            public bool UseBlendshapeArmorSwap = false;
 
             public float ModelBrightness = 0.8f;
             public bool FixCameraHeight = true;
@@ -329,6 +331,7 @@ namespace ValheimVRM
             public float StartVrmShareDelay = 10.0f;
             public bool ForceWindDisabled = false;
             public bool AllowIndividualWinds = true;
+            public string UseShaderBundle = "current";
 
             public override void OnUpdate(Dictionary<string, object> oldValues)
             {

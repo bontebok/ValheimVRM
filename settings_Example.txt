@@ -33,7 +33,8 @@ SittingIdleOffset=(0, 0, 0)
 // Use that if your smol character stuck in air while sleeping
 SleepingOffset=(0, 0, 0)
 
-
+//--- SWAP armor sets via Blendshape Toggles ---//
+UseBlendshapeArmorSwap=false
 
 //--- Equipment transformation ---//
 

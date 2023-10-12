@@ -7,12 +7,29 @@ This requires BepInEx to be installed.
 The folders are setup to put the files where they need to go.
 
 
-### Settings
+### Settings File
 The name of the character in the game needs to correspond to a VRM and settings file like so.
 
 **Character**: Midnight Nova \
 **Settings File**: Midnight Nova_settings.txt \
 **VRM**: Midnight Nova.vrm
+
+### Settings (armorswap)
+If your model has the bellow blendshapes and armor attached to them. The mod will swap to that armor set.\
+- a Blendshape value of 0 is hidden, and a value of 100 is visible.
+```txt
+v_armorswap_rag
+v_armorswap_leather
+v_armorswap_troll
+v_armorswap_root
+v_armorswap_bronze
+v_armorswap_iron
+v_armorswap_fenris
+v_armorswap_wolf
+v_armorswap_padded
+v_armorswap_etirweave
+v_armorswap_carapace
+```
 
 
 ### Default Settings and avatar for people you do not have custom stuff for.
@@ -20,3 +37,20 @@ The name of the character in the game needs to correspond to a VRM and settings 
 You can have Default settings now, to use this. create a settings___Default.txt file, and pair
 ___Default.vrm with it. \
 **NOTE:** settings___Default.txt has 4 underscores, and ___Default.vrm has 3.
+
+### Usefull Info
+- If you have a shader compile error you probably need to use the old shader bundle. \
+  the newer current bundle should work, but JIC ive included the old one still\
+  Its in General settings. UseShaderBundle=old,current. Note that this will affect all models.
+- Export as VRM 0, Under blendshapes check "keep animations" if you want facial expressions to work\
+  (future release) without that checked they will not be exported
+
+### Technical Stuff for maintaining this repo
+- You need to build an Asset Bundle of shaders from time to time to stay inline with UniVrm.
+- Current UniVrm version is 111, which is the last version that supports Unity 2020
+- Most Recent AssetBundle of shaders is UniVrm. This has shaders that are required since like version 70.
+- you will need to install UniVrm into a blank project (create the shader asset bundle there too) \
+  once thats done, you will need to build the Unity Project. Find the Managed folder and set that \
+  as a system Path. - **VALHEIM_UNITY_LIBS**
+- Set your Valheim Folder as a system path. **VALHEIM_INSTALL**
+- Make sure in Unity you have Mono 4.x selected as the target Dot Net version.
