@@ -18,7 +18,10 @@ The name of the character in the game needs to correspond to a VRM and settings 
 When you swap armor in game, if your model has the below blendshapes or BlendShapeClips the mod will swap to that armor set
 once you equip that to the chest that style of armor.
 
-- A Blendshape value of 0 is hidden, and a value of 100 is visible.
+- if you use a BlendShapeClip, you can set what ever values are needed to make your armor work..
+  however if you use a normal Blendshape. A value of 100 will be assigned to it for its max weight
+  and will toggle between 0 and 100 for hidden and shown.
+ 
 ```txt
 v_armorswap_rag
 v_armorswap_leather
