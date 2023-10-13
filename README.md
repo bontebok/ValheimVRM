@@ -54,8 +54,8 @@ ___Default.vrm with it. \
 - You need to build an Asset Bundle of shaders from time to time to stay inline with UniVrm.
 - Current UniVrm version is 111, which is the last version that supports Unity 2020
 - Most Recent AssetBundle of shaders is UniVrm. This has shaders that are required since like version 70.
-- you will need to install UniVrm into a blank project (create the shader asset bundle there too) \
-  once thats done, you will need to build the Unity Project. Find the Managed folder and set that \
+- You will need to install UniVrm into a blank project (create the shader asset bundle there too)
+  once that's done, you will need to build the Unity Project. Find the Managed folder and set that
   as a system Path. - **VALHEIM_UNITY_LIBS**
 - Set your Valheim Folder as a system path. **VALHEIM_INSTALL**
 - Make sure in Unity you have Mono 4.x selected as the target Dot Net version.
