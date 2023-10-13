@@ -243,27 +243,14 @@ namespace ValheimVRM
 						Debug.Log("UpdateLodgroup Chest | armor on | vrm found");
 
 						
-						var proxy = vrm.GetComponent<VRMBlendShapeProxy>();
+						var proxy = vrm.GetComponent<VRMBlendShapeSync>();
 						
-						if (proxy == null)
-						{
-							Debug.LogError("VRMBlendShapeProxy not found!");
-							return;
-						}
-
-						var vvv = proxy.GetValues();
-
-						foreach (var keyValuePair in vvv)
-						{
-							Debug.Log(keyValuePair.Key + ": " + keyValuePair.Value);
-						}
-						
+ 
 						
 						proxy.SetValues(new Dictionary<BlendShapeKey, float>
 						{
-							{BlendShapeKey.CreateUnknown("Tail_Small"), 0.0f},
-							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_L), 0.0f},
-							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_R), 0.0f}
+							{BlendShapeKey.CreateUnknown("v_armorswap_rag"), 0.0f},
+							{BlendShapeKey.CreateUnknown("v_armorswap_leather"), 0.0f}
 						});
 						
 						//var armorSwap = vrm.GetComponent<VRMBlendShapeSync>();
@@ -287,7 +274,7 @@ namespace ValheimVRM
 					{
 						Debug.Log("UpdateLodgroup Chest | NO armor on | vrm found");
 
-						var proxy = vrm.GetComponent<VRMBlendShapeProxy>();
+						var proxy = vrm.GetComponent<VRMBlendShapeSync>();
 
 						if (proxy == null)
 						{
@@ -295,18 +282,12 @@ namespace ValheimVRM
 							return;
 						}
 
-						var vvv = proxy.GetValues();
-
-						foreach (var keyValuePair in vvv)
-						{
-							Debug.Log(keyValuePair.Key + ": " + keyValuePair.Value);
-						}
+ 
 
 						proxy.SetValues(new Dictionary<BlendShapeKey, float>
 						{
-							{BlendShapeKey.CreateUnknown("Tail_Small"), 1.0f},
-							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_L), 1.0f},
-							{BlendShapeKey.CreateFromPreset(BlendShapePreset.Blink_R), 1.0f}
+							{BlendShapeKey.CreateUnknown("v_armorswap_rag"), 1.0f},
+							{BlendShapeKey.CreateUnknown("v_armorswap_leather"), 1.0f}
 						});
 						//var armorSwap = vrm.GetComponent<VRMBlendShapeSync>();
 						// armorSwap["Tail_Small"].Smr.SetBlendShapeWeight(armorSwap["Tail_Small"].Index, 100.0f);

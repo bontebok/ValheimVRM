@@ -15,8 +15,10 @@ The name of the character in the game needs to correspond to a VRM and settings 
 **VRM**: Midnight Nova.vrm
 
 ### Settings (armorswap)
-If your model has the bellow blendshapes and armor attached to them. The mod will swap to that armor set.\
-- a Blendshape value of 0 is hidden, and a value of 100 is visible.
+When you swap armor in game, if your model has the below blendshapes or BlendShapeClips the mod will swap to that armor set
+once you equip that to the chest that style of armor.
+
+- A Blendshape value of 0 is hidden, and a value of 100 is visible.
 ```txt
 v_armorswap_rag
 v_armorswap_leather
