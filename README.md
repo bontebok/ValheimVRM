@@ -51,9 +51,10 @@ ___Default.vrm with it. \
   (future release) without that checked they will not be exported
 
 ### Technical Stuff for maintaining this repo
-- You need to build an Asset Bundle of shaders from time to time to stay inline with UniVrm.
-- Current UniVrm version is 111, which is the last version that supports Unity 2020
-- Most Recent AssetBundle of shaders is UniVrm. This has shaders that are required since like version 70.
+- You might need to build an Asset Bundle of shaders to stay inline with UniVrm. This is probably a non issue
+  unless Valheim Updates Unity. - see next point.
+- Current UniVrm version is 111, which is the last version that supports Unity 2020.
+- Most Recent AssetBundle of shaders is UniVrm.shaders. This has shaders that are required since like version 70.
 - You will need to install UniVrm into a blank project (create the shader asset bundle there too)
   once that's done, you will need to build the Unity Project. Find the Managed folder and set that
   as a system Path. - **VALHEIM_UNITY_LIBS**
