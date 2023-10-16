@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using HarmonyLib;
+using Object = UnityEngine.Object;
 
 namespace ValheimVRM
 {
@@ -32,9 +34,9 @@ namespace ValheimVRM
             Hips,
         }
 
-        private static Dictionary<Bones, string> boneMap = new Dictionary<Bones, string>
+        private static Dictionary<Bones, List<string>> boneMap = new Dictionary<Bones, List<string>>
         {
-            { Bones.Hips, "Armature/Hips" }
+            { Bones.Hips, new List<string> { "Hips", "Pelvis" } }
         };
 
         public string GetEquipmentName(Equipment equipmentName)
@@ -47,16 +49,39 @@ namespace ValheimVRM
             Debug.LogError($"Failed to get the name for the equipment: {name}");
             return null;
         }
-
-        private string GetBonePath(Bones bone)
+        
+        private Transform FindDeepChild(Transform parent, string childName, int depth = 0, int maxDepth = 6)
         {
-            if (boneMap.TryGetValue(bone, out string path) && !string.IsNullOrEmpty(path))
+            if (depth > maxDepth)
+                return null;
+
+            foreach (Transform child in parent)
             {
-                return path;
+                if (child.name.IndexOf(childName, StringComparison.OrdinalIgnoreCase) >= 0)
+                    return child;
+
+                var result = FindDeepChild(child, childName, depth + 1, maxDepth);
+                if (result != null)
+                    return result;
+            }
+            return null;
+        }
+        private bool TryGetBone(Bones bone, Transform rootTransform, out Transform targetBone)
+        {
+            targetBone = null;
+
+            if (boneMap.TryGetValue(bone, out List<string> paths))
+            {
+                foreach (var path in paths)
+                {
+                    targetBone = FindDeepChild(rootTransform, path);
+                    if (targetBone != null)
+                        return true;
+                }
             }
 
-            Debug.LogError($"Failed to get the hierarchy path for the bone: {path}");
-            return null;
+            Debug.LogError($"Failed to get the hierarchy path for the bone: {bone}");
+            return false;
         }
 
 
@@ -308,9 +333,8 @@ namespace ValheimVRM
         private void DoDetachFrom(Bones bone, string meshName, GameObject vrm)
         {
             // Find the target bone
-            var bonePath = GetBonePath(bone);
-            Transform targetBone = vrm.transform.Find(bonePath);
-            if (targetBone == null)
+
+            if (!TryGetBone(bone, vrm.transform, out Transform targetBone))
             {
                 Debug.LogError($"Bone named {bone} not found in VRM model.");
                 return;
@@ -352,10 +376,8 @@ namespace ValheimVRM
                 Debug.LogError("Provided Mesh is null.");
                 return null;
             }
-
-            var bonePath = GetBonePath(bone);
-            Transform targetBone = vrm.transform.Find(bonePath);
-            if (targetBone == null)
+            
+            if (!TryGetBone(bone, vrm.transform, out Transform targetBone))
             {
                 Debug.LogError($"Bone named {bone} not found in VRM model.");
                 return null;
@@ -440,10 +462,8 @@ namespace ValheimVRM
             {
                 return false;
             }
-
-            var bonePath = GetBonePath(bone);
-            Transform targetBone = vrm.transform.Find(bonePath);
-            if (targetBone == null)
+            
+            if (!TryGetBone(bone, vrm.transform, out Transform targetBone))
             {
                 return false;
             }
