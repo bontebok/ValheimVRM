@@ -2,8 +2,14 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
+<<<<<<< Updated upstream
     <Version>1.3.2</Version>
     <TargetFramework>net471</TargetFramework>
+=======
+    <Version>1.3.1</Version>
+    <TargetFramework>net472</TargetFramework>
+    <VALHEIMINSTALL Condition="Exists('D:\SteamLibrary\steamapps\common\Valheim')">D:\SteamLibrary\steamapps\common\Valheim</VALHEIMINSTALL>
+>>>>>>> Stashed changes
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -12,111 +18,113 @@
 
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>$(VALHEIM_INSTALL)\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="assembly_utils">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\assembly_utils.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\assembly_utils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_guiutils">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\assembly_guiutils.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\assembly_guiutils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_valheim">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\assembly_valheim.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\assembly_valheim.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
 
 
     <Reference Include="BepInEx">
-      <HintPath>$(VALHEIM_INSTALL)\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
  
     
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <!--    <Reference Include="UniUnlit">-->
-    <!--      <HintPath>$(UNIVRM_UNITY_LIBS)\UniUnlit.dll</HintPath>-->
+    <!--      <HintPath>$(VALHEIMINSTALL)\valheim_Data\UniUnlit.dll</HintPath>-->
     <!--    </Reference>-->
     <Reference Include="VRM">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VRM.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VRM.dll</HintPath>
     </Reference>
     <Reference Include="VRM10">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VRM10.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VRM10.dll</HintPath>
     </Reference>
     <Reference Include="VrmLib">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VrmLib.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VrmLib.dll</HintPath>
     </Reference>
     <Reference Include="VRMShaders.GLTF.IO.Runtime">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VRMShaders.GLTF.IO.Runtime.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VRMShaders.GLTF.IO.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="VRMShaders.GLTF.UniUnlit.Runtime">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VRMShaders.GLTF.UniUnlit.Runtime.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VRMShaders.GLTF.UniUnlit.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="VRMShaders.VRM.IO.Runtime">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VRMShaders.VRM.IO.Runtime.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VRMShaders.VRM.IO.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="VRMShaders.VRM10.Format.Runtime">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VRMShaders.VRM10.Format.Runtime.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VRMShaders.VRM10.Format.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="VRMShaders.VRM10.MToon10.Runtime">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\VRMShaders.VRM10.MToon10.Runtime.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\VRMShaders.VRM10.MToon10.Runtime.dll</HintPath>
     </Reference>
 
     <Reference Include="FastSpringBone">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\FastSpringBone.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\FastSpringBone.dll</HintPath>
     </Reference>
     <Reference Include="FastSpringBone10">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\FastSpringBone10.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\FastSpringBone10.dll</HintPath>
     </Reference>
     <!--    <Reference Include="MeshUtility">-->
-    <!--      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\MeshUtility.dll</HintPath>-->
+    <!--      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\MeshUtility.dll</HintPath>-->
     <!--    </Reference>-->
     <Reference Include="MToon">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\MToon.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\MToon.dll</HintPath>
     </Reference>
     <!--    <Reference Include="ShaderProperty.Runtime">-->
-    <!--      <HintPath>$(UNIVRM_UNITY_LIBS)\ShaderProperty.Runtime.dll</HintPath>-->
+    <!--      <HintPath>$(VALHEIMINSTALL)\valheim_Data\ShaderProperty.Runtime.dll</HintPath>-->
     <!--    </Reference>-->
     <Reference Include="UniGLTF">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\UniGLTF.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UniGLTF.dll</HintPath>
     </Reference>
     <Reference Include="UniGLTF.Utils">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\UniGLTF.Utils.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UniGLTF.Utils.dll</HintPath>
     </Reference>
     <!--    <Reference Include="UniGLTF.Editor">-->
-    <!--      <HintPath>$(UNIVRM_UNITY_LIBS)\UniGLTF.Editor.dll</HintPath>-->
+    <!--      <HintPath>$(VALHEIMINSTALL)\valheim_Data\UniGLTF.Editor.dll</HintPath>-->
     <!--    </Reference>-->
     <Reference Include="UniHumanoid">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\UniHumanoid.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\UniHumanoid.dll</HintPath>
     </Reference>
     <Reference Include="AsyncImageLoader">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\AsyncImageLoader.Runtime.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\AsyncImageLoader.Runtime.dll</HintPath>
     </Reference>
     
     <Reference Include="Unity.Burst">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\Unity.Burst.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\Unity.Burst.dll</HintPath>
     </Reference>
     
     <Reference Include="Unity.Mathematics">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Managed\Unity.Mathematics.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\Unity.Mathematics.dll</HintPath>
     </Reference>
+<!--
     <Reference Include="FreeImage.dll">
-      <HintPath>$(UNIVRM_UNITY_LIBS)\Plugins\x86_64\FreeImage.dll</HintPath>
+      <HintPath>$(VALHEIMINSTALL)\valheim_Data\Managed\FreeImage.dll</HintPath>
     </Reference>
+-->
   </ItemGroup>
 
   <ItemGroup>
@@ -127,12 +135,12 @@
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <!-- Set Paths -->
     <PropertyGroup>
-      <BepInExPluginPath>$(VALHEIM_INSTALL)\BepInEx\plugins\</BepInExPluginPath>
-      <ManagedPath>$(VALHEIM_INSTALL)\valheim_Data\Managed\</ManagedPath>
-      <UniVrmLibsPathManaged>$(UNIVRM_UNITY_LIBS)\Managed</UniVrmLibsPathManaged>
-      <UniVrmLibsPathPlugins>$(UNIVRM_UNITY_LIBS)\Plugins\x86_64</UniVrmLibsPathPlugins>
+      <BepInExPluginPath>$(VALHEIMINSTALL)\BepInEx\plugins\</BepInExPluginPath>
+      <ManagedPath>$(VALHEIMINSTALL)\valheim_Data\Managed\</ManagedPath>
+      <UniVrmLibsPathManaged>$(VALHEIMINSTALL)\valheim_Data\Managed</UniVrmLibsPathManaged>
+      <UniVrmLibsPathPlugins>$(VALHEIMINSTALL)\valheim_Data\Plugins\x86_64</UniVrmLibsPathPlugins>
       <Pdb2MdbPath>$(SolutionDir)pdb2mdb.exe</Pdb2MdbPath>
-<!--      <UnstrippedCorlibPath>$(VALHEIM_INSTALL)\unstripped_corlib\</UnstrippedCorlibPath>-->
+<!--      <UnstrippedCorlibPath>$(VALHEIMINSTALL)\unstripped_corlib\</UnstrippedCorlibPath>-->
     </PropertyGroup>
 
     <PropertyGroup>
